@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NovaLand Network</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#07010f;
+color:white;
+overflow-x:hidden;
+position:relative;
+}
+
+/* ESTRELLAS */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+background-image:
+radial-gradient(white 1px, transparent 1px);
+background-size:50px 50px;
+opacity:0.12;
+animation:moveStars 60s linear infinite;
+z-index:-2;
+}
+
+@keyframes moveStars{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-1000px);
+}
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 50px;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(12px);
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#b366ff;
+text-shadow:0 0 20px #8a2be2;
+}
+
+.menu-toggle{
+display:none;
+font-size:35px;
+cursor:pointer;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+transition:.3s;
+font-size:16px;
+}
+
+nav a:hover{
+color:#b366ff;
+text-shadow:0 0 10px #8a2be2;
+}
+
+/* HERO */
+
+header{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(rgba(5,0,15,.80),rgba(0,0,0,.92)),
+url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1600');
+background-size:cover;
+background-position:center;
+animation:zoomBg 15s infinite alternate;
+}
+
+@keyframes zoomBg{
+from{
+background-size:100%;
+}
+to{
+background-size:110%;
+}
+}
+
+header h1{
+font-size:75px;
+color:#c084ff;
+text-shadow:
+0 0 10px #8a2be2,
+0 0 40px #8a2be2;
+margin-bottom:20px;
+animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px #8a2be2;
+}
+to{
+text-shadow:
+0 0 20px #8a2be2,
+0 0 50px #8a2be2;
+}
+}
+
+header p{
+max-width:850px;
+font-size:20px;
+color:#ddd;
+margin-bottom:35px;
+animation:fadeUp 1.5s ease;
+}
+
+/* BOTONES */
+
+.buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+animation:fadeUp 2s ease;
+}
+
+.btn{
+padding:15px 35px;
+border-radius:14px;
+text-decoration:none;
+font-size:18px;
+font-weight:600;
+transition:.3s;
+}
+
+.discord{
+background:#8a2be2;
+color:white;
+box-shadow:0 0 20px #8a2be2;
+}
+
+.discord:hover{
+transform:translateY(-5px) scale(1.05);
+box-shadow:0 0 35px #8a2be2;
+}
+
+.store{
+background:white;
+color:black;
+}
+
+.store:hover{
+transform:translateY(-5px) scale(1.05);
+}
+
+/* STATUS */
+
+.status{
+padding:100px 20px;
+text-align:center;
+animation:fadeUp 2s ease;
+}
+
+.status-box{
+margin:auto;
+max-width:500px;
+background:rgba(18,5,31,.8);
+backdrop-filter:blur(10px);
+padding:35px;
+border-radius:25px;
+box-shadow:0 0 20px rgba(138,43,226,.4);
+}
+
+.online{
+color:#00ff88;
+font-weight:bold;
+}
+
+/* CARDS */
+
+.info{
+padding:90px 20px;
+text-align:center;
+}
+
+.info h2{
+font-size:45px;
+margin-bottom:20px;
+color:#c084ff;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+margin-top:50px;
+}
+
+.card{
+background:rgba(18,5,31,.8);
+backdrop-filter:blur(10px);
+padding:35px;
+border-radius:25px;
+transition:.3s;
+box-shadow:0 0 15px rgba(138,43,226,.2);
+animation:fadeUp 2s ease;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(138,43,226,.5);
+}
+
+.card h3{
+margin-bottom:15px;
+font-size:24px;
+color:#c084ff;
+}
+
+/* REDES */
+
+.socials{
+padding:90px 20px;
+text-align:center;
+}
+
+.socials h2{
+font-size:45px;
+margin-bottom:40px;
+color:#c084ff;
+}
+
+.social-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.social-card{
+background:rgba(18,5,31,.8);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:25px;
+box-shadow:0 0 20px rgba(138,43,226,.2);
+transition:.3s;
+animation:fadeUp 2s ease;
+}
+
+.social-card:hover{
+transform:scale(1.03);
+box-shadow:0 0 30px rgba(138,43,226,.5);
+}
+
+.social-card h3{
+font-size:30px;
+margin-bottom:15px;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+background:#0d0218;
+color:#888;
+margin-top:80px;
+}
+
+/* ANIMACION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+nav{
+padding:20px;
+}
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#0d0218;
+flex-direction:column;
+text-align:center;
+padding:20px 0;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+
+header h1{
+font-size:50px;
+}
+
+header p{
+font-size:17px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<nav>
+
+<div class="logo">
+NovaLand
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+☰
+</div>
+
+<ul id="menu">
+<li><a href="#">Inicio</a></li>
+<li><a href="#">Servidor</a></li>
+<li><a href="#">Tienda</a></li>
+<li><a href="#">YouTube</a></li>
+<li><a href="#">TikTok</a></li>
+<li><a href="https://discord.gg/beqs2gNrE">Discord</a></li>
+</ul>
+
+</nav>
+
+<header>
+
+<h1>NovaLand Network</h1>
+
+<p>
+La nueva experiencia de Minecraft con sistemas únicos, eventos increíbles y una comunidad épica preparada para una aventura espacial.
+</p>
+
+<div class="buttons">
+
+<a href="https://discord.gg/beqs2gNrE" class="btn discord">
+Entrar al discord
+</a>
+
+<a href="#" class="btn store">
+Ir a la Tienda
+</a>
+
+</div>
+
+</header>
+
+<section class="status">
+
+<div class="status-box">
+
+<h2>🎮 Estado del Servidor</h2>
+
+<br>
+
+<p>
+Estado:
+<span class="online">
+● OFFLINE
+</span>
+</p>
+
+<br>
+
+<p>
+👥 Jugadores conectados: 0
+</p>
+
+<br>
+
+<p>
+🌐 IP: novaland.exaroton.me
+</p>
+
+</div>
+
+</section>
+
+<section class="info">
+
+<h2>¿Qué ofrece NovaLand?</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🌌 Comunidad</h3>
+<p>
+Una comunidad activa y amigable preparada para nuevas aventuras.
+</p>
+</div>
+
+<div class="card">
+<h3>🎮 Modalidades</h3>
+<p>
+Sistemas personalizados, eventos únicos y experiencias increíbles.
+</p>
+</div>
+
+<div class="card">
+<h3>🚀 Eventos</h3>
+<p>
+Eventos semanales con recompensas especiales y mucha diversión.
+</p>
+</div>
+
+<div class="card">
+<h3>💎 Economía</h3>
+<p>
+Sistema económico balanceado y progresión divertida.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="socials">
+
+<h2>📺 Creadores de Contenido</h2>
+
+<div class="social-grid">
+
+<div class="social-card">
+<h3>🎥 YouTube</h3>
+
+<p>
+Canal oficial para videos, shorts, gameplays y contenido épico de NovaLand Network.
+</p>
+
+</div>
+
+<div class="social-card">
+<h3>🎵 TikTok</h3>
+
+<p>
+Clips, momentos divertidos, eventos y highlights del servidor.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 NovaLand Network — Todos los derechos reservados
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>
